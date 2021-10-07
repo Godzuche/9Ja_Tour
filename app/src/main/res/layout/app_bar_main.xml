@@ -16,7 +16,7 @@
             android:layout_height="?actionBarSize"
             android:elevation="4dp"
             style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
-            android:fitsSystemWindows="true"/>
+            app:title="Home"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main"
