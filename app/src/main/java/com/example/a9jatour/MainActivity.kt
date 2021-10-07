@@ -6,6 +6,8 @@ import android.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.a9jatour.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
@@ -31,5 +33,14 @@ class MainActivity : AppCompatActivity() {
         //Get NavHostFragment and NavController
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
+
+        //Define AppBarConfiguration: Connect DrawerLayout with Navigation Component
+        val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
+
+        //Connect Toolbar with NavController
+        toolbar.setupWithNavController(navController, appBarConfiguration)
+
+        //Connect NavigationView with NavController
+
     }
 }

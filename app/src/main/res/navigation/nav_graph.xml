@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/fragmentFavoriteList"
         android:name="com.example.a9jatour.ui.favorite.FavoriteFragment"
-        android:label="Favorite"
+        android:label="Favorites"
         tools:layout="@layout/fragment_favorite_list"/>
 
 </navigation>
