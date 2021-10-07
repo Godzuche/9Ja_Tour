@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 <group android:checkableBehavior="single">
-    <item android:id="@+id/action_fragmentCityList"
+<!--    by using the same id as the fragment's, you no longer have to use an onClickListener for the menu items-->
+    <item android:id="@+id/fragmentCityList"
         android:title="Home"
         android:icon="@drawable/ic_home"/>
 
-    <item android:id="@+id/action_fragmentFavoriteList"
+    <item android:id="@+id/fragmentFavoriteList"
         android:title="Favorites"
         android:icon="@drawable/ic_favorite_filled"/>
 </group>
