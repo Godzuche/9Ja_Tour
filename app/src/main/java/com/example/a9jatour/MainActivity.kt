@@ -41,6 +41,6 @@ class MainActivity : AppCompatActivity() {
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
         //Connect NavigationView with NavController
-
+        navigationView.setupWithNavController(navController)
     }
 }
