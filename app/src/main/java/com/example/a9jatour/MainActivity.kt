@@ -2,7 +2,9 @@ package com.example.a9jatour
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -42,5 +44,12 @@ class MainActivity : AppCompatActivity() {
 
         //Connect NavigationView with NavController
         navigationView.setupWithNavController(navController)
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isOpen)
+            drawerLayout.close()
+        else
+            super.onBackPressed()
     }
 }
