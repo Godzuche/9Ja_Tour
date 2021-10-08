@@ -85,7 +85,7 @@ object VacationSpots {
         "York", "Stratford-upon-Avon", "Bournemouth", "Beijing",
         "Miami", "Portland", "Chengdu", "Hangzhou", "Suzhou", "Tangshan",
         "Hong Kong", "Cairns", "Perth", "Brisbane",
-        "Kakinada", "Melbourne", "Great Barrier Reef", "Sydney"
+        "Kakinada", "Melbourne", "Great Barrier Reef", "Sydney" ,"Port Harcourt"
     )
 
     var cityList : ArrayList<City>? = null
