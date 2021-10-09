@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/root_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:elevation="5dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imv_city"
+                android:layout_width="0dp"
+                android:layout_height="175dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/placeholder" />
+
+            <TextView
+                android:id="@+id/txv_city_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:padding="15dp"
+                android:textColor="#353434"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imv_favorite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imv_city"
+                tools:text="City Name" />
+
+            <ImageView
+                android:id="@+id/imv_delete"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_margin="7dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imv_city"
+                app:srcCompat="@drawable/ic_delete"
+                app:tint="#9e9e9e" />
+
+            <ImageView
+                android:id="@+id/imv_favorite"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_margin="7dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imv_delete"
+                app:layout_constraintTop_toBottomOf="@+id/imv_city"
+                app:srcCompat="@drawable/ic_favorite_bordered"
+                app:tint="#9e9e9e" />
+        </androidx.constraintlayout.widget.ConstraintLayout><androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/icon_city"
+            android:layout_width="0dp"
+            android:layout_height="175dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/placeholder" />
+
+        <TextView
+            android:id="@+id/text_city_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="15dp"
+            android:textColor="#353434"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/icon_favorite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon_city"
+            tools:text="City Name" />
+
+        <ImageView
+            android:id="@+id/icon_delete"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon_city"
+            app:srcCompat="@drawable/ic_delete"
+            app:tint="#9e9e9e" />
+
+        <ImageView
+            android:id="@+id/icon_favorite"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="7dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/icon_delete"
+            app:layout_constraintTop_toBottomOf="@+id/icon_city"
+            app:srcCompat="@drawable/ic_favorite_bordered"
+            app:tint="#9e9e9e" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

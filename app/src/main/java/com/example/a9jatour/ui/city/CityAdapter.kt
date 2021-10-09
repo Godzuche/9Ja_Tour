@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a9jatour.R
+import com.example.a9jatour.data.manager.VacationSpots
 import com.example.a9jatour.data.model.City
-import kotlin.concurrent.fixedRateTimer
 
 class CityAdapter(val context: Context, var cityList: ArrayList<City>) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
     val tag = this::class.simpleName
@@ -20,7 +20,7 @@ class CityAdapter(val context: Context, var cityList: ArrayList<City>) : Recycle
 
         Log.i(tag, "onCreateViewHolder: ViewHolder created")
 
-        val itemView = LayoutInflater.from(context).inflate(R.layout.list_item_city, parent, false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.list_item_city_list, parent, false)
         return CityViewHolder(itemView)
     }
 
@@ -39,23 +39,34 @@ class CityAdapter(val context: Context, var cityList: ArrayList<City>) : Recycle
         private var currentPosition: Int = -1
         private var currentCity: City? = null
 
-        val imageCity: ImageView = itemView.findViewById(R.id.image_city)
-        val textCityName = itemView.findViewById<TextView>(R.id.text_city_name)
+        val imageCity: ImageView = itemView.findViewById(R.id.imv_city)
+        val textCityName = itemView.findViewById<TextView>(R.id.text_name_city)
         val iconFavorite =  itemView.findViewById<ImageView>(R.id.icon_favorite)
         val iconDelete = itemView.findViewById<ImageView>(R.id.icon_delete)
 
         private val icFavoriteFilledImage = ResourcesCompat.getDrawable(context.resources, R.drawable.ic_favorite_filled, null)
         private val icFavoriteBotheredImage = ResourcesCompat.getDrawable(context.resources, R.drawable.ic_favorite_bordered, null)
+        var favList: MutableList<City>? = null
+        get() {
+            if (field != null)
+                return field
+            field = mutableListOf()
+            val fav = VacationSpots.cityList?.filter { it.isFavorite }?.toMutableList()
+            fav?.let { field?.addAll(fav) }
 
-        /*init {
+            return field
+        }
+
+        init {
             iconFavorite.setOnClickListener {
-                if (currentCity?.isFavorite!!)
-                    cityList[currentPosition].isFavorite = false
+                if (!(currentCity?.isFavorite!!))
+                    currentCity!!.isFavorite = true
                 else
-                    currentCity?.isFavorite = true
+                    currentCity?.isFavorite = false
+                favList?.let { VacationSpots.favoriteCityList.addAll(favList!!) }
                 notifyDataSetChanged()
             }
-        }*/
+        }
 
         fun setData(city: City, position: Int) {
             imageCity.setImageResource(city.imageId)
