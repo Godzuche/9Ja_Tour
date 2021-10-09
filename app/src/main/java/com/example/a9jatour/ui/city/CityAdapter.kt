@@ -30,11 +30,13 @@ class CityAdapter(val context: Context, var cityList: ArrayList<City>) : Recycle
 
         val city = cityList[position]
         holder.setData(city, position)
+        holder.setListener()
     }
 
     override fun getItemCount() = cityList.size
 
-    inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
 
         private var currentPosition: Int = -1
         private var currentCity: City? = null
@@ -46,27 +48,6 @@ class CityAdapter(val context: Context, var cityList: ArrayList<City>) : Recycle
 
         private val icFavoriteFilledImage = ResourcesCompat.getDrawable(context.resources, R.drawable.ic_favorite_filled, null)
         private val icFavoriteBotheredImage = ResourcesCompat.getDrawable(context.resources, R.drawable.ic_favorite_bordered, null)
-        var favList: MutableList<City>? = null
-        get() {
-            if (field != null)
-                return field
-            field = mutableListOf()
-            val fav = VacationSpots.cityList?.filter { it.isFavorite }?.toMutableList()
-            fav?.let { field?.addAll(fav) }
-
-            return field
-        }
-
-        init {
-            iconFavorite.setOnClickListener {
-                if (!(currentCity?.isFavorite!!))
-                    currentCity!!.isFavorite = true
-                else
-                    currentCity?.isFavorite = false
-                favList?.let { VacationSpots.favoriteCityList.addAll(favList!!) }
-                notifyDataSetChanged()
-            }
-        }
 
         fun setData(city: City, position: Int) {
             imageCity.setImageResource(city.imageId)
@@ -79,6 +60,26 @@ class CityAdapter(val context: Context, var cityList: ArrayList<City>) : Recycle
 
             this.currentPosition = position
             this.currentCity = city
+        }
+
+        fun setListener() {
+            iconDelete.setOnClickListener(this@CityViewHolder)
+            iconFavorite.setOnClickListener(this@CityViewHolder)
+        }
+
+        override fun onClick(v: View?) {
+            when(v!!.id) {
+                R.id.icon_delete -> deleteItem()
+                R.id.icon_favorite -> addToFavorite()
+            }
+        }
+
+        private fun addToFavorite() {
+
+        }
+
+        private fun deleteItem() {
+
         }
     }
 }
