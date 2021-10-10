@@ -3,6 +3,7 @@ package com.example.a9jatour
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.Menu
 import android.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         //Define AppBarConfiguration
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        val topLevelDestinations = setOf<Int>(R.id.fragmentCityList, R.id.fragmentFavoriteList)
+        val appBarConfiguration = AppBarConfiguration(topLevelDestinations)
 
         //Connect Toolbar with NavController
         toolbar.setupWithNavController(navController, appBarConfiguration)
