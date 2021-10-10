@@ -103,5 +103,6 @@ object VacationSpots {
         return field
     }
 
+    //will contain the favorite marked cities to be displayed in the FragmentFavoriteList
     var favoriteCityList = mutableListOf<City>()
 }

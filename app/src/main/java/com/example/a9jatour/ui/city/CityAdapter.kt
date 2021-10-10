@@ -75,11 +75,23 @@ class CityAdapter(val context: Context, var cityList: ArrayList<City>) : Recycle
         }
 
         private fun addToFavorite() {
-
+            currentCity?.isFavorite = !(currentCity?.isFavorite)!! //toggle the 'isFavorite'
+            if (currentCity?.isFavorite!!) {
+                iconFavorite.setImageDrawable(icFavoriteFilledImage)
+                VacationSpots.favoriteCityList.add(currentCity!!)
+            } else {
+                iconFavorite.setImageDrawable(icFavoriteBotheredImage)
+                VacationSpots.favoriteCityList.remove(currentCity!!)
+            }
         }
 
         private fun deleteItem() {
+            cityList.removeAt(currentPosition)
+            notifyItemRemoved(currentPosition)
+            notifyItemRangeChanged(currentPosition, cityList.size)
 
+            if (currentCity?.isFavorite!!)
+                VacationSpots.favoriteCityList.remove(currentCity!!)
         }
     }
 }
