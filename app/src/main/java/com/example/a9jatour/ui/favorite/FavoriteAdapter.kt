@@ -27,7 +27,7 @@ class FavoriteAdapter(val context: Context, var favoriteCityList: MutableList<Ci
 
     inner class FavoriteViewHolder(binding : ListItemFavoriteBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        val imageV_fav_city : ImageView = binding.iconCity
+        val imageV_fav_city : ImageView = binding.imvCity
         val nameFavoriteCity : TextView = binding.textCityName
 
         fun bindItem(favoriteCity: City, position: Int) {
