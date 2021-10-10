@@ -7,10 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a9jatour.data.model.City
-import com.example.a9jatour.databinding.FragmentFavoriteListBinding
 import com.example.a9jatour.databinding.ListItemFavoriteBinding
 
-class FavoriteAdapter(val context: Context, var favoriteCityList: MutableList<City>) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
+class FavoriteAdapter(private val context: Context, private var favCityList: MutableList<City>) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
@@ -19,20 +18,27 @@ class FavoriteAdapter(val context: Context, var favoriteCityList: MutableList<Ci
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
-        val favoriteCity = favoriteCityList[position]
-        holder.bindItem(favoriteCity, position)
+        val city = favCityList[position]
+        holder.bindItem(city, position)
     }
 
-    override fun getItemCount(): Int = favoriteCityList.size
+    override fun getItemCount(): Int = favCityList.size
 
     inner class FavoriteViewHolder(binding : ListItemFavoriteBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        private var currentPositon: Int = -1
+        private var currentCity: City? = null
+
         val imageV_fav_city : ImageView = binding.imvCity
         val nameFavoriteCity : TextView = binding.textCityName
 
-        fun bindItem(favoriteCity: City, position: Int) {
-            imageV_fav_city.setImageResource(favoriteCity.imageId)
-            nameFavoriteCity.text = favoriteCity.name
+        fun bindItem(city: City, position: Int) {
+            imageV_fav_city.setImageResource(city.imageId)
+            nameFavoriteCity.text = city.name
+
+            this.currentCity = city
+            this.currentPositon = position
         }
     }
 }
